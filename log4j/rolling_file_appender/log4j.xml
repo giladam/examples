@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd" >
+<log4j:configuration>
+
+    <appender name="file" class="org.apache.log4j.rolling.RollingFileAppender">
+        <param name="File" value="/opt/example/var/log/server.log" /> <!-- The active file to log to -->
+        <param name="append" value="true" />
+        <param name="threshold" value="TRACE"/>
+        <param name="encoding" value="UTF-8" />
+        <rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
+                <param name="FileNamePattern" value="/opt/example/var/log/server.log-%d{yyyyMMdd}.gz" />
+        </rollingPolicy>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                value="%d %-5p [%X{ndcPropertyExample}] [%c] (%t) %m%n" />
+        </layout>
+    </appender>
+    
+    
+    <logger name="org.springsource">
+        <level value="INFO"/> 
+    </logger>
+    
+    <logger name="org.hibernate">
+        <level value="INFO"/> 
+    </logger>
+    
+    <logger name="com.example">
+        <level value="INFO"/> 
+    </logger>
+
+    <logger name="org.apache.cxf.interceptor">
+        <level value="WARN" />
+    </logger>
+    
+    <root>
+        <priority value="INFO" />
+        <appender-ref ref="file" />
+    </root>
+
+</log4j:configuration>

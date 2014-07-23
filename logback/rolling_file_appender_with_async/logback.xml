@@ -1,0 +1,39 @@
+<configuration scan="true">
+
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>/opt/example/var/log/server.log</file>
+		<!-- This option is required if multiple apps will write to the same log file.  <prudent>true</prudent> -->
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+		  <!-- daily rollover -->
+		  <fileNamePattern>/opt/example/var/log/server.log-%d{yyyyMMdd}.gz</fileNamePattern>
+		  <maxHistory>10</maxHistory><!-- keep X days worth of history -->
+		</rollingPolicy>
+		
+		<append>true</append>
+		
+		<encoder>
+          <pattern>%d %p [%X{ndcPropertyNameExample}] [%logger] \(%t\) - %msg%n</pattern>
+		</encoder>	
+	</appender>
+    
+    
+	<appender name="QUEUE" class="ch.qos.logback.classic.AsyncAppender">
+		<discardingThreshold>0</discardingThreshold>
+	      <queueSize>10000</queueSize>
+	      <appender-ref ref="FILE" />
+	</appender>
+    
+    
+	<logger name="org.hibernate" level="INFO" />
+	<logger name="org.springframework.security" level="INFO" />
+    <logger name="org.springsource" level="INFO" />
+    
+    <logger name="org.apache.cxf.interceptor" level="WARN" />
+    
+	<logger name="com.example" level="INFO" />
+    
+	<root level="INFO">
+        <appender-ref ref="QUEUE" />
+	</root>
+  
+</configuration>

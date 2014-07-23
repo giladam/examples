@@ -1,0 +1,25 @@
+<configuration scan="true">
+
+    <!-- This file should be placed in .\src\test\resources and it will be picked up during tests. -->
+
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+          <pattern>%d %p [%X{ndcPropertyExample}] [%logger] \(%t\) - %msg%n</pattern>
+		</encoder>	
+	</appender>
+
+
+	<logger name="org.hibernate" level="INFO" />
+	<logger name="org.springframework.security" level="INFO" />
+    <logger name="org.springsource" level="INFO" />
+    
+    <logger name="org.apache.cxf.interceptor" level="WARN" />
+    
+	<logger name="com.example" level="INFO" />
+       
+	<root level="INFO">
+		<appender-ref ref="CONSOLE" />
+	</root>
+  
+  
+</configuration>

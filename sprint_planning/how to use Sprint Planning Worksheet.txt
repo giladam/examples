@@ -1,0 +1,5 @@
+1. Put team members names at the top.
+2. Put prioritized issues on the left.
+3. Fill hours/days/points to capacity.
+4. Don't allow too much red or you will likely over commit.
+5. Don't allow too much green or you will not be utilizing the team enough.

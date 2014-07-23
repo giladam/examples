@@ -13,7 +13,7 @@ This is the usage message for the script.
 Options:
 
     -w, --workdir                Sets the working directory.
-    -o, --outdir                 Sets the directory for the output rpm files.
+    -o, --outdir                 Sets the directory.
     -d, --debug                  Debug mode.
     
 USAGE_BLOCK
